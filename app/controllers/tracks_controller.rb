@@ -19,7 +19,7 @@ class TracksController < ApplicationController
 
       # read and process GPX file
       file = Nokogiri::XML(file)
-      startdate = file.xpath('//time').text
+      startdate = file.xpath('//metadata/time').text
 
       # add new record with conversion of 'startdate' to DateTime format
       @track = Track.new(name: name, startdate: DateTime.parse(startdate))
