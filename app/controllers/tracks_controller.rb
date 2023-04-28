@@ -5,6 +5,8 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
   end
 
   def new
