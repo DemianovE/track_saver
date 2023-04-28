@@ -1,0 +1,33 @@
+<h1>Tracks App</h1>
+
+<% if flash[:success] %>
+    <hr>
+    <h5>
+        <strong>
+            <%= flash[:success] %>
+        </strong>
+    </h5>
+    <hr>
+<% elsif flash[:error]%>
+    <hr>
+    <h5>
+        <strong>
+            <%= flash[:error] %>
+        </strong>
+    </h5>
+    <hr>
+<% end %>
+
+<p> You can create new track here:</p>
+    <%= link_to "create new track", new_track_path, class: "btn btn-primary"%>
+<p>Find below all current tracks</p>
+
+
+
+<ul>
+    <% @tracks.each do |track| %>
+        <li>
+            <%= link_to track.startdate.strftime("%Y-%m-%dT%H:%M:%SZ") + " - " + track.name, track%>
+        </li>
+    <%end%>
+</ul>

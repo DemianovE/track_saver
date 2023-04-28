@@ -1,0 +1,32 @@
+<h1> Track # <%=@track.id%></h1>
+<p>All data:</p>
+
+<table>
+    <thead>
+        <th>Filed</th>
+        <th>Value</th>
+    </thead>
+    <tbody>
+        <% @track.attributes.each do |key, value|%>
+            <tr>
+                <% if key == "name" or key == "id"%>
+                    <td>
+                        <strong><%= key %></strong>
+                    </td>
+                    <td>
+                         <%= value %>
+                    </td>
+                <% else %>
+                    <td>
+                        <strong><%= key %></strong>
+                    </td>
+                    <td>
+                        <%= value.strftime("%Y-%m-%dT%H:%M:%SZ") %>
+                    </td>
+                <%end%>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Back to main page', "/"%>
